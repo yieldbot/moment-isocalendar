@@ -42,6 +42,7 @@
     "pretest": "rm -fr reports/coverage",
     "test": "NODE_ENV=test multi='spec=- xunit=reports/mocha-xunit.xml' istanbul cover _mocha -- --reporter mocha-multi `find . \\( -path \\*node_modules\\* -prune -o -path \\*public\\* -prune -o -name test-\\*.js \\) -type f | awk 'NR>1{printf \" \"}{printf $0}'`",
     "posttest": "istanbul check-coverage",
-    "build": "npm run prepare && npm run depcheck && npm run lint && npm run test"
+    "build": "npm run prepare && npm run depcheck && npm run lint && npm run test",
+    "ybpublish": "publish"
   }
 }
