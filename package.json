@@ -21,7 +21,8 @@
     "dependency-check": "^2.5.1",
     "mocha": "latest",
     "chai": "latest",
-    "jshint": "latest"
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.0.1"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "clean": "rm -rf node_modules/ && rm -rf reports/",
     "prepare": "npm install && mkdir -p reports",
     "depcheck": "dependency-check . `find . \\( -path \\*node_modules\\* -prune -o -path \\*public\\* -prune -o -name \\*.js \\) -type f | awk 'NR>1{printf \" \"}{printf \"--entry \" $0}'`",
-    "build": "npm run prepare && npm run depcheck && npm run lint && npm run test"
+    "lint": "jshint --reporter checkstyle `find . \\( -path \\*.idea\\* -prune -o -path \\*node_modules\\* -prune -o -path \\*public\\* -prune -o -path \\*reports\\* -prune -o -name \\*.js \\) -type f | awk 'NR>1{printf \" \"}{printf $0}'` > reports/jshint-checkstyle.xml",
+    "build": "npm run prepare && npm run depcheck"
   }
 }
