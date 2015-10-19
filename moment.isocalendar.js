@@ -17,10 +17,10 @@ if ( typeof require !== 'undefined' )
         // ISO week is the first week with a Thursday, so if the first
         // day of the year is Friday, move to next Sunday.
         if ( day > 4 ) {
-          m.add('weeks', 1);
+          m.add(1, 'weeks');
         }
 
-        m.subtract('days', day - 1);
+        m.subtract(day - 1, 'days');
 
         return m;
       }
