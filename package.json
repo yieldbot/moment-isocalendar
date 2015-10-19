@@ -25,7 +25,8 @@
     "mocha-multi": "^0.7.2",
     "chai": "latest",
     "jshint": "^2.8.0",
-    "jshint-stylish": "^2.0.1"
+    "jshint-stylish": "^2.0.1",
+    "yb-publish": "^0.3.3"
   },
   "repository": {
     "type": "git",
