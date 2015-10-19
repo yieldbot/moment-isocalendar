@@ -15,11 +15,13 @@
     "node": "*"
   },
   "dependencies": {
+    "mocha-multi": "^0.7.2",
     "moment": ">=1.4.0"
   },
   "devDependencies": {
     "dependency-check": "^2.5.1",
     "mocha": "latest",
+    "mocha-multi": "^0.7.2",
     "chai": "latest",
     "jshint": "^2.8.0",
     "jshint-stylish": "^2.0.1"
@@ -32,10 +34,11 @@
     "url": "https://github.com/fusionbox/moment-isocalendar/issues"
   },
   "scripts": {
-    "clean": "rm -rf node_modules/ && rm -rf reports/",
+    "clean": "rm -rf node_modules/ && rm -rf reports/ && rm -rf coverage/",
     "prepare": "npm install && mkdir -p reports",
     "depcheck": "dependency-check . `find . \\( -path \\*node_modules\\* -prune -o -path \\*public\\* -prune -o -name \\*.js \\) -type f | awk 'NR>1{printf \" \"}{printf \"--entry \" $0}'`",
     "lint": "jshint --reporter checkstyle `find . \\( -path \\*.idea\\* -prune -o -path \\*node_modules\\* -prune -o -path \\*public\\* -prune -o -path \\*reports\\* -prune -o -name \\*.js \\) -type f | awk 'NR>1{printf \" \"}{printf $0}'` > reports/jshint-checkstyle.xml",
-    "build": "npm run prepare && npm run depcheck"
+    "test": "NODE_ENV=test multi='spec=- xunit=reports/mocha-xunit.xml' istanbul cover _mocha -- --reporter mocha-multi `find . \\( -path \\*node_modules\\* -prune -o -path \\*public\\* -prune -o -name test-\\*.js \\) -type f | awk 'NR>1{printf \" \"}{printf $0}'`",
+    "build": "npm run prepare && npm run depcheck && npm run lint && npm run test"
   }
 }

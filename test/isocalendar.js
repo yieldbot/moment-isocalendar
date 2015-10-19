@@ -17,7 +17,8 @@ function date2iso(date, iso) {
 }
 
 function iso2date(iso, date) {
-  moment.fromIsocalendar(iso).should.eql(moment(date));
+  //moment.fromIsocalendar(iso).should.eql(moment(date));
+  moment.fromIsocalendar(iso).toJSON().should.eql(moment(date).toJSON());
 }
 
 function backAndForth(date) {
@@ -26,7 +27,7 @@ function backAndForth(date) {
     ;
 
   try {
-  date.should.eql(date2);
+  date.toJSON().should.eql(date2.toJSON());
   } catch (e) {
     console.log(date.format('LLLL'), iso, date2.format('LLLL'), e);
     throw e;
@@ -90,28 +91,28 @@ describe('setters/getters', function() {
     var m = moment([2012, 3, 10, 0]);
 
     m.isoyear().should.equal(2012);
-    m.isoyear(1901).should.eql(moment([1901, 3, 9, 0]));
+    m.isoyear(1901).toJSON().should.eql(moment([1901, 3, 9, 0]).toJSON());
   });
 
   it('week', function() {
     var m = moment([2012, 3, 10, 0]);
 
     m.isoweek().should.equal(15);
-    m.isoweek(16).should.eql(moment([2012, 3, 17, 0]));
+    m.isoweek(16).toJSON().should.eql(moment([2012, 3, 17, 0]).toJSON());
   });
 
   it('day', function() {
     var m = moment([2012, 3, 10, 0]);
 
     m.isoday().should.equal(2);
-    m.isoday(7).should.eql(moment([2012, 3, 15, 0]));
+    m.isoday(7).toJSON().should.eql(moment([2012, 3, 15, 0]).toJSON());
   });
 
   it('minute', function() {
     var m = moment([2012, 3, 10, 0]);
 
     m.isominute().should.equal(0);
-    m.isominute(300).should.eql(moment([2012, 3, 10, 5]));
+    m.isominute(300).toJSON().should.eql(moment([2012, 3, 10, 5]).toJSON());
   });
 
   it('mutates the moment like other moment setters/getters', function() {
