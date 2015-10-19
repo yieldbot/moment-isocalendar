@@ -15,6 +15,7 @@
     "node": "*"
   },
   "dependencies": {
+    "dependency-check": "^2.5.1",
     "moment": ">=1.4.0"
   },
   "devDependencies": {
@@ -30,6 +31,9 @@
     "url": "https://github.com/fusionbox/moment-isocalendar/issues"
   },
   "scripts": {
-    "clean": "rm -rf node_modules/ && rm -rf reports/"
+    "clean": "rm -rf node_modules/ && rm -rf reports/",
+    "prepare": "npm install && mkdir -p reports",
+    "depcheck": "dependency-check . `find . \\( -path \\*node_modules\\* -prune -o -path \\*public\\* -prune -o -name \\*.js \\) -type f | awk 'NR>1{printf \" \"}{printf \"--entry \" $0}'`",
+    "build": "npm run prepare && npm run depcheck && npm run lint && npm run test"
   }
 }
