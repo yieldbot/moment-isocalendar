@@ -30,10 +30,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fusionbox/moment-isocalendar.git"
+    "url": "https://github.com/yieldbot/moment-isocalendar.git"
   },
   "bugs": {
-    "url": "https://github.com/fusionbox/moment-isocalendar/issues"
+    "url": "https://github.com/yieldbot/moment-isocalendar/issues"
   },
   "scripts": {
     "clean": "rm -rf node_modules/ && rm -rf reports/",
