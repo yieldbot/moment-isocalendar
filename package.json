@@ -28,6 +28,9 @@
     "jshint-stylish": "^2.0.1",
     "yb-publish": "^0.3.3"
   },
+  "publishConfig": {
+    "registry": "https://artifactory.yb0t.cc/artifactory/api/npm/yieldbot-npm"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/yieldbot/moment-isocalendar.git"
